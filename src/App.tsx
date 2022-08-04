@@ -1,7 +1,17 @@
 import React from "react"
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import Main from "./components/Main";
 
 export default function App() {
-    return <h1 className="text-5xl font-bold underline text-red-900">
-        Resume Builder
-    </h1>
+    return <>
+        <div className="relative">
+            <Header />
+
+            <div className="flex">
+                <Sidebar />
+                <Main />
+            </div>
+        </div>
+    </>
 }
