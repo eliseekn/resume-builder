@@ -1,13 +1,13 @@
 import React from "react"
 import Title from "../../Style/Title"
+import {useAppSelector} from "../../../services/redux/hooks";
+import {RootState} from "../../../services/redux/store";
 
 export default function About() {
+    const about = useAppSelector((state: RootState) => state.about)
+
     return <>
         <Title content="About" />
-
-        <p>
-            Self-taught and passionate about programming, I have 3+ years experience in user interfaces and web applications
-            development.
-        </p>
+        <p>{about}</p>
     </>
 }

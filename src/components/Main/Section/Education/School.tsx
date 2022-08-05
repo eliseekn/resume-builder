@@ -8,7 +8,8 @@ interface DegreeProps {
     endDate: string
 }
 
-interface Props {
+export interface Props {
+    id: number,
     name: string,
     degrees: DegreeProps[]
 }

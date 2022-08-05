@@ -1,17 +1,12 @@
 import React from "react"
-import Title from "../../../Style/Title";
-import Skill from "./Skill";
-
-const skills = [
-    'PHP',
-    'Laravel',
-    'Symfony',
-    'React.js',
-    'React Native',
-    'Bootstrap',
-]
+import Title from "../../../Style/Title"
+import Skill from "./Skill"
+import {useAppSelector} from "../../../../services/redux/hooks";
+import {RootState} from "../../../../services/redux/store";
 
 export default function Skills() {
+    const skills = useAppSelector((state: RootState) => state.skills)
+
     return <>
         <Title content="Skills" />
 

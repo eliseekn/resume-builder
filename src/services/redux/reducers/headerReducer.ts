@@ -3,12 +3,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 export const headerSlice = createSlice({
     name: 'header',
     initialState: {
-        fullName: "Elisée Kouadio N'Guessan",
-        emailAddress: "eliseekn@gmail.com",
-        jobTitle: "Full-stack Web Developer",
-        location: "Abidjan, Côte d'Ivoire",
-        phoneNumber: "(+225) 0759434291/0500471669",
-        portfolioUrl: "https://eliseekn.netlify.app"
+        fullName: '',
+        emailAddress: '',
+        jobTitle: '',
+        location: '',
+        phoneNumber: '',
+        portfolioUrl: ''
     },
     reducers: {
         setFullNane(state, action: PayloadAction<string>) {

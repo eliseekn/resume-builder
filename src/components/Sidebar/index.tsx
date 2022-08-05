@@ -1,35 +1,14 @@
-import React, {ChangeEvent} from "react"
-import {setFullNane} from "../../services/redux/reducers/headerReducer"
-import {useAppDispatch} from "../../services/redux/hooks";
+import React from "react"
+import Header from "./Header"
+import About from "./About"
+import Skills from "./Skills"
 
 export default function Sidebar() {
-    const dispatch = useAppDispatch()
+    return <div className="basis-1/4 border-r-2 p-5 h-screen sticky top-0 overflow-y-scroll">
+        <h2 className="font-bold text-lg">Sections</h2>
 
-    const handleSetFullName = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(setFullNane(e.target.value))
-    }
-
-    return <div className="basis-1/3 border-r-2 p-5 h-screen sticky top-0">
-        <h2 className="font-medium text-xl">General information</h2>
-
-        <div className="mt-5">
-            <label htmlFor="full-name">Full Name</label>
-            <input type="text" className="rounded-lg w-full" id="full-name" placeholder="Elisée Kouadio N'Guessan" onChange={(e: ChangeEvent<HTMLInputElement>) => handleSetFullName(e)} />
-        </div>
-
-        <div className="mt-5">
-            <label htmlFor="email">Email Adress</label>
-            <input type="email" className="rounded-lg w-full" id="email" placeholder="eliseekn@gmail.com" />
-        </div>
-
-        <div className="mt-5">
-            <label htmlFor="phone-number">Phone Number</label>
-            <input type="text" className="rounded-lg w-full" id="phone-number" placeholder="(+225) 0759434291" />
-        </div>
-
-        <div className="mt-5">
-            <label htmlFor="portfolio">Portfolio</label>
-            <input type="url" className="rounded-lg w-full" id="portfolio" placeholder="https://eliseekn.netlify.com" />
-        </div>
+        <Header />
+        <About />
+        <Skills />
     </div>
 }
