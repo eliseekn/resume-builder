@@ -1,34 +1,39 @@
 import React from "react"
-import Title from "../../../Style/Title";
-import SubTitle from "../../../Style/SubTitle";
-import List from "../../../Style/List";
+import Title from "../../../Style/Title"
+import Company from "./Company"
+
+const companies = [
+    {
+        name: 'Company 1',
+        jobs: [
+            {
+                title: 'Job 1',
+                startDate: 'start date',
+                endDate: 'end date',
+                works: ['Work 1', 'Work 2', 'Work 3']
+            },
+        ]
+    },
+
+    {
+        name: 'Company 2',
+        jobs: [
+            {
+                title: 'Job 2',
+                startDate: 'start date',
+                endDate: 'end date',
+                works: ['Work 1', 'Work 2', 'Work 3']
+            },
+        ]
+    },
+]
 
 export default function Experience() {
     return <>
         <Title content="Professional Experience" />
 
-        <div className="mt-5">
-            <SubTitle content="Company name" />
-
-            <List>
-                <li className="italic">Title 1 (start date - end date)</li>
-
-                <List bullet={true}>
-                    <li>Job 1</li>
-                    <li>Job 2</li>
-                    <li>Job 3</li>
-                </List>
-            </List>
-
-            <ul className="ml-10 mt-3">
-                <li className="italic">Title 2 (start date - end date)</li>
-
-                <ul className="list-disc ml-10 mt-3">
-                    <li>Job 1</li>
-                    <li>Job 2</li>
-                    <li>Job 3</li>
-                </ul>
-            </ul>
-        </div>
+        {companies.map((company, i) =>
+            <Company key={i} name={company.name} jobs={company.jobs} />
+        )}
     </>
 }

@@ -1,12 +1,20 @@
-import React from "react"
+import React, {ChangeEvent} from "react"
+import {setFullNane} from "../../services/redux/reducers/headerReducer"
+import {useAppDispatch} from "../../services/redux/hooks";
 
 export default function Sidebar() {
+    const dispatch = useAppDispatch()
+
+    const handleSetFullName = (e: ChangeEvent<HTMLInputElement>) => {
+        dispatch(setFullNane(e.target.value))
+    }
+
     return <div className="basis-1/3 border-r-2 p-5 h-screen sticky top-0">
         <h2 className="font-medium text-xl">General information</h2>
 
         <div className="mt-5">
             <label htmlFor="full-name">Full Name</label>
-            <input type="text" className="rounded-lg w-full" id="full-name" placeholder="Elisée Kouadio N'Guessan" />
+            <input type="text" className="rounded-lg w-full" id="full-name" placeholder="Elisée Kouadio N'Guessan" onChange={(e: ChangeEvent<HTMLInputElement>) => handleSetFullName(e)} />
         </div>
 
         <div className="mt-5">

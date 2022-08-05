@@ -1,22 +1,28 @@
 import React from "react"
+import FullName from "./FullName"
+import JobTitle from "./JobTitle"
+import Location from "./Location"
+import PhoneNumber from "./PhoneNumber"
+import EmailAddress from "./EmailAddress"
+import PortfolioUrl from "./PortfolioUrl"
+import {useAppSelector} from "../../../../services/redux/hooks";
+import {RootState} from "../../../../services/redux/store";
 
 export default function Header() {
+    const header = useAppSelector((state: RootState) => state.header)
+
     return <div className="text-center">
-        <p className="font-medium">Full Name</p>
-        <p className="font-medium text-xl mt-3">Senior Software Developer</p>
+        <FullName content={header.fullName} />
+        <JobTitle content={header.jobTitle} />
 
-        <div className="flex justify-center items-center gap-5 mt-5">
-            <p>Abidjan, Côte d'Ivoire</p>
-            <p>(+225) 0000000000</p>
+        <div className="flex justify-center items-center gap-x-5 mt-3">
+            <Location content={header.location} />
+            <PhoneNumber content={header.phoneNumber} />
         </div>
 
-        <div className="flex justify-center items-center gap-5 mt-2">
-            <p>test@email.com</p>
-            <p>https://portfolio.com</p>
+        <div className="flex justify-center items-center gap-x-5 mt-2">
+            <EmailAddress content={header.emailAddress} />
+            <PortfolioUrl content={header.portfolioUrl} />
         </div>
-
-        <p className="mt-5 text-center">
-            Sit asperiores debitis sint quo. Ipsam earum consequatur omnis libero blanditiis error natus. Sed delectus natus possimus explicabo nihil praesentium incidunt.
-        </p>
     </div>
 }
