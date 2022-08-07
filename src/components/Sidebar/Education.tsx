@@ -8,7 +8,7 @@ import {addEducation, removeEducation} from "../../services/redux/reducers/educa
 
 export default function Education() {
     const dispatch = useAppDispatch()
-    const schools = useAppSelector((state: RootState) => state.education)
+    const schools = useAppSelector<Props[]>((state: RootState) => state.education)
 
     const [displayOptions, setDisplayOptions] = useState<boolean>(false)
     const [schoolId, setSchoolId] = useState<number>(1)

@@ -5,11 +5,11 @@ export const educationSlice = createSlice({
     name: 'education',
     initialState: [],
     reducers: {
-        addEducation(state, action: PayloadAction<Props>) {
+        addEducation(state: Props[], action: PayloadAction<Props>) {
             state.push(action.payload)
         },
         removeEducation(state, action: PayloadAction<number>) {
-            return state.filter((state) => state.id !== action.payload)
+            return state.filter((state: Props) => state.id !== action.payload)
         }
     }
 })

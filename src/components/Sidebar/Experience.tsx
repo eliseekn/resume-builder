@@ -8,7 +8,7 @@ import {addExperience, removeExperience} from "../../services/redux/reducers/exp
 
 export default function Company() {
     const dispatch = useAppDispatch()
-    const companies = useAppSelector((state: RootState) => state.experience)
+    const companies = useAppSelector<Props[]>((state: RootState) => state.experience)
 
     const [displayOptions, setDisplayOptions] = useState<boolean>(false)
     const [companyId, setCompanyId] = useState<number>(1)

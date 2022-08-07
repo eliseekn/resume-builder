@@ -1,11 +1,11 @@
 import React from "react"
 import Title from "../../../Style/Title"
-import Company from "./Company"
+import Company, {Props} from "./Company"
 import {useAppSelector} from "../../../../services/redux/hooks"
 import {RootState} from "../../../../services/redux/store"
 
 export default function Experience() {
-    const companies = useAppSelector((state: RootState) => state.experience)
+    const companies = useAppSelector<Props[]>((state: RootState) => state.experience)
 
     return <>
         <Title content="Professional Experience" />

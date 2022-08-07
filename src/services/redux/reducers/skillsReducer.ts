@@ -4,11 +4,11 @@ export const skillsSlice = createSlice({
     name: 'skills',
     initialState: [],
     reducers: {
-        addSkill(state, action: PayloadAction<string>) {
+        addSkill(state: string[], action: PayloadAction<string>) {
             state.push(action.payload)
         },
         removeSkill(state, action: PayloadAction<string>) {
-            return state.filter((state) => state !== action.payload)
+            return state.filter((state: string) => state !== action.payload)
         }
     }
 })

@@ -7,7 +7,7 @@ import {faAngleDown, faAngleUp} from "@fortawesome/free-solid-svg-icons";
 
 export default function Skills() {
     const dispatch = useAppDispatch()
-    const skills = useAppSelector((state: RootState) => state.skills)
+    const skills = useAppSelector<string[]>((state: RootState) => state.skills)
 
     const [displayOptions, setDisplayOptions] = useState<boolean>(false)
     const [skill, setSkill] = useState<string>('')
