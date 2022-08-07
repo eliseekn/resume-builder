@@ -5,6 +5,7 @@ import ExperienceReducer from "./reducers/experienceReducer";
 import EducationReducer from "./reducers/educationReducer";
 import AboutReducer from "./reducers/aboutReducer";
 import CertificationReducer from "./reducers/certificationReducer";
+import SectionsReducer from "./reducers/sectionsReducer";
 
 export const store = configureStore({
     reducer: {
@@ -13,7 +14,8 @@ export const store = configureStore({
         experience: ExperienceReducer,
         education: EducationReducer,
         about: AboutReducer,
-        certification: CertificationReducer
+        certification: CertificationReducer,
+        sections: SectionsReducer
     },
 })
 

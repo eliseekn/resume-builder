@@ -1,10 +1,11 @@
 import React, {ChangeEvent, useState} from "react"
 import {useAppDispatch, useAppSelector} from "../../services/redux/hooks";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleDown, faAngleUp} from "@fortawesome/free-solid-svg-icons";
+import {faAngleDown, faAngleUp, faMinus} from "@fortawesome/free-solid-svg-icons";
 import {Props} from "../Main/Section/Experience/Company";
 import {RootState} from "../../services/redux/store";
 import {addExperience, removeExperience} from "../../services/redux/reducers/experienceReducer";
+import {removeSection} from "../../services/redux/reducers/sectionsReducer";
 
 export default function Company() {
     const dispatch = useAppDispatch()
@@ -66,11 +67,21 @@ export default function Company() {
         dispatch(removeExperience(id))
     }
 
+    const handleRemoveSection = (section: string) => {
+        dispatch(removeSection(section))
+    }
+
     return <>
-        <p className="section-header" onClick={() => setDisplayOptions(!displayOptions)}>
-            <span>Professional Experience</span>
-            <FontAwesomeIcon icon={displayOptions ? faAngleUp : faAngleDown} />
-        </p>
+        <div className="flex items-center mt-3">
+            <p className="section-header" onClick={() => setDisplayOptions(!displayOptions)}>
+                <span>Professional Experience</span>
+                <FontAwesomeIcon icon={displayOptions ? faAngleUp : faAngleDown} />
+            </p>
+
+            <button className="btn-circle" onClick={() => handleRemoveSection('experience')}>
+                <FontAwesomeIcon icon={faMinus} />
+            </button>
+        </div>
 
         {displayOptions && <div className="ml-2 px-5">
             <div className="mt-3">

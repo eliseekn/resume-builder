@@ -4,7 +4,7 @@
 
 @layer components {
     .btn {
-        @apply py-1 px-3 border-2 border-gray-200 rounded-lg hover:bg-gray-200 transition-all duration-500
+        @apply py-1 px-3 border-2 border-gray-200 rounded-lg hover:bg-gray-200 transition-colors duration-500
     }
 
     .badge {
@@ -12,6 +12,10 @@
     }
 
     .section-header {
-        @apply cursor-pointer text-lg flex items-center justify-between border-2 px-5 py-2 rounded-lg mt-3
+        @apply cursor-pointer flex items-center justify-between border-2 px-5 py-2 rounded-lg w-full hover:bg-gray-200 transition-colors duration-500
+    }
+
+    .btn-circle {
+        @apply ml-3 transition-colors duration-500 p-3 h-4 w-4 flex items-center justify-center rounded-full border-2 border-gray-200 hover:bg-gray-200
     }
 }

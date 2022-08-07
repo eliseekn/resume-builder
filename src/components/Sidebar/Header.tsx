@@ -8,8 +8,9 @@ import {
 } from "../../services/redux/reducers/headerReducer"
 import {useAppDispatch, useAppSelector} from "../../services/redux/hooks";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faAngleUp, faAngleDown} from "@fortawesome/free-solid-svg-icons";
+import {faAngleUp, faAngleDown, faMinus} from "@fortawesome/free-solid-svg-icons";
 import {RootState} from "../../services/redux/store";
+import {removeSection} from "../../services/redux/reducers/sectionsReducer";
 
 export default function Header() {
     const dispatch = useAppDispatch()
@@ -41,11 +42,21 @@ export default function Header() {
         dispatch(setPortfolioUrl(e.target.value))
     }
 
+    const handleRemoveSection = (section: string) => {
+        dispatch(removeSection(section))
+    }
+
     return <>
-        <p className="section-header" onClick={() => setDisplayOptions(!displayOptions)}>
-            <span>Header</span>
-            <FontAwesomeIcon icon={displayOptions ? faAngleUp : faAngleDown} />
-        </p>
+        <div className="flex items-center mt-3">
+            <div className="section-header" onClick={() => setDisplayOptions(!displayOptions)}>
+                <span>Header</span>
+                <FontAwesomeIcon icon={displayOptions ? faAngleUp : faAngleDown} />
+            </div>
+
+            <button className="btn-circle" onClick={() => handleRemoveSection('header')}>
+                <FontAwesomeIcon icon={faMinus} />
+            </button>
+        </div>
 
         {displayOptions && <div className="ml-2 px-5">
             <div className="mt-3">

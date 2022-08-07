@@ -1,10 +1,11 @@
 import React, {ChangeEvent, useState} from "react"
 import {useAppDispatch, useAppSelector} from "../../services/redux/hooks";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleDown, faAngleUp} from "@fortawesome/free-solid-svg-icons";
+import {faAngleDown, faAngleUp, faMinus} from "@fortawesome/free-solid-svg-icons";
 import {Props} from "../Main/Section/Certification/Organization";
 import {RootState} from "../../services/redux/store";
 import {addCertification, removeCertification} from "../../services/redux/reducers/certificationReducer";
+import {removeSection} from "../../services/redux/reducers/sectionsReducer";
 
 export default function Certification() {
     const dispatch = useAppDispatch()
@@ -54,11 +55,21 @@ export default function Certification() {
         dispatch(removeCertification(id))
     }
 
+    const handleRemoveSection = (section: string) => {
+        dispatch(removeSection(section))
+    }
+
     return <>
-        <p className="section-header" onClick={() => setDisplayOptions(!displayOptions)}>
-            <span>Certification</span>
-            <FontAwesomeIcon icon={displayOptions ? faAngleUp : faAngleDown} />
-        </p>
+        <div className="flex items-center mt-3">
+            <p className="section-header" onClick={() => setDisplayOptions(!displayOptions)}>
+                <span>Certification</span>
+                <FontAwesomeIcon icon={displayOptions ? faAngleUp : faAngleDown} />
+            </p>
+
+            <button className="btn-circle" onClick={() => handleRemoveSection('certification')}>
+                <FontAwesomeIcon icon={faMinus} />
+            </button>
+        </div>
 
         {displayOptions && <div className="ml-2 px-5">
             <div className="mt-3">

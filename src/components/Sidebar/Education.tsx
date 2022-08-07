@@ -1,10 +1,11 @@
 import React, {ChangeEvent, useState} from "react"
 import {useAppDispatch, useAppSelector} from "../../services/redux/hooks";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleDown, faAngleUp} from "@fortawesome/free-solid-svg-icons";
+import {faAngleDown, faAngleUp, faMinus} from "@fortawesome/free-solid-svg-icons";
 import {Props} from "../Main/Section/Education/School";
 import {RootState} from "../../services/redux/store";
 import {addEducation, removeEducation} from "../../services/redux/reducers/educationReducer";
+import {removeSection} from "../../services/redux/reducers/sectionsReducer";
 
 export default function Education() {
     const dispatch = useAppDispatch()
@@ -60,11 +61,21 @@ export default function Education() {
         dispatch(removeEducation(id))
     }
 
+    const handleRemoveSection = (section: string) => {
+        dispatch(removeSection(section))
+    }
+
     return <>
-        <p className="section-header" onClick={() => setDisplayOptions(!displayOptions)}>
-            <span>Education</span>
-            <FontAwesomeIcon icon={displayOptions ? faAngleUp : faAngleDown} />
-        </p>
+        <div className="flex items-center mt-3">
+            <p className="section-header" onClick={() => setDisplayOptions(!displayOptions)}>
+                <span>Education</span>
+                <FontAwesomeIcon icon={displayOptions ? faAngleUp : faAngleDown} />
+            </p>
+
+            <button className="btn-circle" onClick={() => handleRemoveSection('education')}>
+                <FontAwesomeIcon icon={faMinus} />
+            </button>
+        </div>
 
         {displayOptions && <div className="ml-2 px-5">
             <div className="mt-3">
