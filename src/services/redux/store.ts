@@ -4,6 +4,7 @@ import SkillsReducer from "./reducers/skillsReducer";
 import ExperienceReducer from "./reducers/experienceReducer";
 import EducationReducer from "./reducers/educationReducer";
 import AboutReducer from "./reducers/aboutReducer";
+import CertificationReducer from "./reducers/certificationReducer";
 
 export const store = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
         skills: SkillsReducer,
         experience: ExperienceReducer,
         education: EducationReducer,
-        about: AboutReducer
+        about: AboutReducer,
+        certification: CertificationReducer
     },
 })
 

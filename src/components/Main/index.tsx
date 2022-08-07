@@ -6,6 +6,7 @@ import About from "./Section/About"
 import Header from "./Section/Header"
 import Skills from "./Section/Skills"
 import Section from "./Section";
+import Certification from "./Section/Certification";
 
 export default function Main() {
     return <div className="basis-full bg-gray-400 pt-5">
@@ -15,6 +16,7 @@ export default function Main() {
             <Section name={<Skills />} />
             <Section name={<Experience />} />
             <Section name={<Education />} />
+            <Section name={<Certification />} />
         </Page>
     </div>
 }

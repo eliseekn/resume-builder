@@ -24,8 +24,8 @@ export default function Skills() {
         setSkill('')
     }
 
-    const handleRemoveSkill = (_skill: string) => {
-        dispatch(removeSkill(_skill))
+    const handleRemoveSkill = (skill: string) => {
+        dispatch(removeSkill(skill))
     }
 
     return <>
