@@ -1,18 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import {Props} from "../../../components/Main/Section/Education/School";
+import {Props} from "../../../components/Main/Section/Education/School"
 
 export const educationSlice = createSlice({
     name: 'education',
-    initialState: [
-        {
-            id: 1,
-            name: '',
-            degrees: [
-                {title: '', startDate: '', endDate: ''},
-                {title: '', startDate: '', endDate: ''},
-            ]
-        }
-    ],
+    initialState: [],
     reducers: {
         addEducation(state, action: PayloadAction<Props>) {
             state.push(action.payload)
@@ -23,9 +14,5 @@ export const educationSlice = createSlice({
     }
 })
 
-export const {
-    addEducation,
-    removeEducation,
-} = educationSlice.actions
-
+export const {addEducation, removeEducation,} = educationSlice.actions
 export default educationSlice.reducer

@@ -13,9 +13,5 @@ export const skillsSlice = createSlice({
     }
 })
 
-export const {
-    addSkill,
-    removeSkill,
-} = skillsSlice.actions
-
+export const {addSkill, removeSkill,} = skillsSlice.actions
 export default skillsSlice.reducer

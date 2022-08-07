@@ -8,8 +8,8 @@ import {faAngleDown, faAngleUp} from "@fortawesome/free-solid-svg-icons";
 export default function Skills() {
     const dispatch = useAppDispatch()
     const skills = useAppSelector((state: RootState) => state.skills)
-    const [displayOptions, setDisplayOptions] = useState<boolean>(false)
 
+    const [displayOptions, setDisplayOptions] = useState<boolean>(false)
     const [skill, setSkill] = useState<string>('')
 
     const handleSetSkill = (e: ChangeEvent<HTMLInputElement>) => {
@@ -18,6 +18,7 @@ export default function Skills() {
 
     const handleAddSkill = () => {
         if (skill === '') return alert('Please provide a valid skill')
+        if (skills.includes(skill)) return alert('This skill has already been added')
 
         dispatch(addSkill(skill))
         setSkill('')
@@ -28,18 +29,18 @@ export default function Skills() {
     }
 
     return <>
-        <p className="cursor-pointer text-lg flex items-center justify-between border-2 px-5 py-2 rounded-lg mt-5" onClick={() => setDisplayOptions(!displayOptions)}>
+        <p className="section-header" onClick={() => setDisplayOptions(!displayOptions)}>
             <span>Skills</span>
             <FontAwesomeIcon icon={displayOptions ? faAngleUp : faAngleDown} />
         </p>
 
         {displayOptions && <div className="ml-2 px-5">
-            <div className="mt-5 flex items-center">
-                <input type="text" className="rounded-lg w-full" placeholder="PHP" value={skill} onChange={handleSetSkill} />
-                <button className="btn ml-3 py-2" onClick={() => handleAddSkill()}>Add</button>
+            <div className="mt-3 flex items-center">
+                <input type="text" className="rounded-lg w-full" placeholder="Skill name" value={skill} onChange={handleSetSkill} />
+                <button className="btn ml-3 py-2 disabled:bg-gray-300" onClick={() => handleAddSkill()}>Add</button>
             </div>
 
-            <div className="mt-3 grid grid-cols-2 gap-1">
+            <div className="mt-3 grid grid-cols-1 gap-1">
                 {skills.map((skill, i) => <div key={i} className="flex items-center justify-between badge">
                     <span>{skill}</span>
                     <span className="cursor-pointer px-1 font-bold" onClick={() => handleRemoveSkill(skill)}>x</span>

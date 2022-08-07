@@ -11,7 +11,14 @@ export default function Education() {
         <Title content="Education" />
 
         {schools.map((school, i) =>
-            <School key={i} id={i} name={school.name} degrees={school.degrees} />
+            <School
+                key={i}
+                id={i}
+                name={school.name}
+                degree={school.degree}
+                startDate={school.startDate}
+                endDate={school.endDate}
+            />
         )}
     </>
 }

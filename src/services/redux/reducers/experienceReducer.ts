@@ -3,20 +3,7 @@ import {Props} from "../../../components/Main/Section/Experience/Company"
 
 export const experienceSlice = createSlice({
     name: 'experience',
-    initialState: [
-        {
-            id: 1,
-            name: '',
-            jobs: [
-                {
-                    title: '',
-                    startDate: '',
-                    endDate: '',
-                    works: ['']
-                },
-            ]
-        }
-    ],
+    initialState: [],
     reducers: {
         addExperience(state, action: PayloadAction<Props>) {
             state.push(action.payload)
@@ -27,9 +14,5 @@ export const experienceSlice = createSlice({
     }
 })
 
-export const {
-    addExperience,
-    removeExperience,
-} = experienceSlice.actions
-
+export const {addExperience, removeExperience,} = experienceSlice.actions
 export default experienceSlice.reducer

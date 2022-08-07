@@ -1,29 +1,22 @@
 import React from "react"
-import SubTitle from "../../../Style/SubTitle"
 import List from "../../../Style/List"
-
-interface DegreeProps {
-    title: string,
-    startDate: string,
-    endDate: string
-}
+import moment from "moment/moment"
 
 export interface Props {
     id: number,
     name: string,
-    degrees: DegreeProps[]
+    degree: string
+    endDate: string,
+    startDate: string,
 }
 
-export default function School({name, degrees}: Props) {
-    return <>
-        <SubTitle content={name} />
+export default function School({name, degree, startDate, endDate}: Props) {
+    const setStartDate = () => moment(startDate).format('MMM YYYY')
+    const setEndDate = () => moment(endDate).format('MMM YYYY')
 
-        <List>
-            {degrees.map((degree, i) =>
-                <li key={i}>
-                    {degree.title} (<span className="italic">{degree.startDate} - {degree.endDate}</span>)
-                </li>
-            )}
-        </List>
-    </>
+    return <List>
+        <li>
+            <span className="font-medium italic">{degree}</span> at <span className="font-medium italic">{name}</span> (<span className="italic">{setStartDate()} - {setEndDate()}</span>)
+        </li>
+    </List>
 }
