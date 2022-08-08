@@ -13,7 +13,7 @@ export default function Main() {
     const sections = useAppSelector<string[]>((state: RootState) => state.sections)
 
     return <div className="basis-full bg-gray-400 pt-5">
-        <div className="p-8 mb-5 bg-white h-full" style={{ width: "210mm", marginInline: "auto" }} id="resume-content">
+        <div className="p-8 mb-5 bg-white h-full w-[210mm] mx-auto" id="resume-content">
             {sections.includes('header') && <Section name={<Header />} />}
             {sections.includes('about') && <Section name={<About />} />}
             {sections.includes('skills') && <Section name={<Skills />} />}
