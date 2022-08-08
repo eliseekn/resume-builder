@@ -3,12 +3,13 @@ import Title from "../../../Style/Title"
 import Company, {Props} from "./Company"
 import {useAppSelector} from "../../../../services/redux/hooks"
 import {RootState} from "../../../../services/redux/store"
+import __ from "../../../../lang"
 
 export default function Experience() {
     const companies = useAppSelector<Props[]>((state: RootState) => state.experience)
 
     return <>
-        <Title content="Professional Experience" />
+        <Title content={__('professional_experience')} />
 
         {companies.map(company =>
             <Company

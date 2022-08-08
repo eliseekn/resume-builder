@@ -1,21 +1,23 @@
 import {configureStore} from "@reduxjs/toolkit"
-import HeaderReducer from "./reducers/headerReducer"
-import SkillsReducer from "./reducers/skillsReducer"
-import ExperienceReducer from "./reducers/experienceReducer"
-import EducationReducer from "./reducers/educationReducer"
-import AboutReducer from "./reducers/aboutReducer"
-import CertificationReducer from "./reducers/certificationReducer"
-import SectionsReducer from "./reducers/sectionsReducer"
+import headerReducer from "./reducers/headerReducer"
+import skillsReducer from "./reducers/skillsReducer"
+import experienceReducer from "./reducers/experienceReducer"
+import educationReducer from "./reducers/educationReducer"
+import aboutReducer from "./reducers/aboutReducer"
+import certificationReducer from "./reducers/certificationReducer"
+import sectionsReducer from "./reducers/sectionsReducer"
+import languageReducer from "./reducers/languageReducer";
 
 export const store = configureStore({
     reducer: {
-        header: HeaderReducer,
-        skills: SkillsReducer,
-        experience: ExperienceReducer,
-        education: EducationReducer,
-        about: AboutReducer,
-        certification: CertificationReducer,
-        sections: SectionsReducer
+        header: headerReducer,
+        skills: skillsReducer,
+        experience: experienceReducer,
+        education: educationReducer,
+        about: aboutReducer,
+        certification: certificationReducer,
+        sections: sectionsReducer,
+        language: languageReducer
     },
 })
 

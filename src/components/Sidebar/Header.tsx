@@ -81,12 +81,12 @@ export default function Header() {
 
             <div className="mt-3">
                 <label htmlFor="phone-number">Phone Number</label>
-                <input type="search" className="rounded-lg w-full" id="phone-number" value={header.phoneNumber} placeholder="(+225) 0759434291/0500471669" pattern="/^d/" onChange={handleSetPhoneNumber} />
+                <input type="search" className="rounded-lg w-full" id="phone-number" value={header.phoneNumber} placeholder="(+225) 0759434291/0500471669" onChange={handleSetPhoneNumber} />
             </div>
 
             <div className="mt-3">
                 <label htmlFor="portfolio">Portfolio Url</label>
-                <input type="search" className="rounded-lg w-full" id="portfolio" value={header.portfolioUrl} placeholder="https://eliseekn.netlify.com" onChange={handleSetPortfolioUrl} />
+                <input type="search" className="rounded-lg w-full" id="portfolio" value={header.portfolioUrl} placeholder="https://eliseekn.netlify.app" onChange={handleSetPortfolioUrl} />
             </div>
         </div>}
     </>

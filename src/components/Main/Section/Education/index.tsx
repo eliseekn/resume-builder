@@ -1,14 +1,15 @@
 import React from "react"
-import Title from "../../../Style/Title";
+import Title from "../../../Style/Title"
 import School, {Props} from "./School";
-import {useAppSelector} from "../../../../services/redux/hooks";
-import {RootState} from "../../../../services/redux/store";
+import {useAppSelector} from "../../../../services/redux/hooks"
+import {RootState} from "../../../../services/redux/store"
+import __ from "../../../../lang"
 
 export default function Education() {
     const schools = useAppSelector<Props[]>((state: RootState) => state.education)
 
     return <>
-        <Title content="Education" />
+        <Title content={__('education')} />
 
         {schools.map(school =>
             <School

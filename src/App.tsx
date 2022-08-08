@@ -1,7 +1,7 @@
 import React from "react"
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import Main from "./components/Main";
+import Header from "./components/Header"
+import Sidebar from "./components/Sidebar"
+import Main from "./components/Main"
 
 export default function App() {
     return <>

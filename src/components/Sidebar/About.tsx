@@ -37,7 +37,7 @@ export default function About() {
                 <textarea
                     className="rounded-lg w-full"
                     onChange={handleSetAbout}
-                    placeholder="Full-stack Web Developer with 3+ years of experience."
+                    placeholder="I have 3+ years of experience in user interfaces and web app development."
                     rows={5}
                     style={{ resize: 'none' }}
                     value={about}

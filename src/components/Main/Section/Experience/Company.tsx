@@ -1,6 +1,9 @@
 import React from "react"
 import moment from "moment";
 import List from "../../../Style/List"
+import __ from "../../../../lang"
+import {useAppSelector} from "../../../../services/redux/hooks"
+import {RootState} from "../../../../services/redux/store"
 
 export interface Props {
     id: number,
@@ -12,13 +15,18 @@ export interface Props {
 }
 
 export default function Company({name, startDate, endDate, jobTitle, jobDescription}: Props) {
+    const language = useAppSelector<string>((state: RootState) => state.language)
+
     const jobDescriptionToList = () => jobDescription.split('#')
-    const setStartDate = () => moment(startDate).format('MMM YYYY')
-    const setEndDate = () => moment(endDate).format('MMM YYYY')
+
+    const setDate = () => {
+        moment.locale(language)
+        return <span className="italic">{moment(startDate).format('MMM YYYY')} - {moment(endDate).format('MMM YYYY')}</span>
+    }
 
     return <List>
         <li>
-            <span className="font-medium italic">{jobTitle}</span> at <span className="font-medium italic">{name}</span> (<span className="italic">{setStartDate()} - {setEndDate()}</span>)
+            <span className="font-medium italic">{jobTitle}</span> {__('at')} <span className="font-medium italic">{name}</span> ({setDate()})
         </li>
 
         <ul className="list-disc ml-8 mt-2">

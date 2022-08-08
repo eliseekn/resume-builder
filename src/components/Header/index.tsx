@@ -1,8 +1,12 @@
-import React from "react"
+import React, {ChangeEvent} from "react"
 import jsPDF from "jspdf"
 import html2canvas from "html2canvas"
+import {useAppDispatch} from "../../services/redux/hooks";
+import {setLanguage} from "../../services/redux/reducers/languageReducer";
 
 export default function Header() {
+    const dispatch = useAppDispatch()
+
     //https://www.freakyjolly.com/multipage-canvas-pdf-using-jspdf/
     const handleDownloadResume = async () => {
         const htmlContainer = document.querySelector("#resume-content") as HTMLElement
@@ -31,10 +35,24 @@ export default function Header() {
             })
     }
 
+    const handleSetLanguage =(e: ChangeEvent<HTMLSelectElement>) => {
+        dispatch(setLanguage(e.target.value))
+    }
+
     return <div className="py-3 px-5 border-b-2">
         <div className="flex justify-between items-center">
             <h1 className="font-medium text-2xl">Resume Builder <small>(v0.1)</small></h1>
-            <button type="button" className="btn" onClick={() => handleDownloadResume()}>Download</button>
+
+            <div>
+                <select name="language" id="language" className="py-1 rounded-lg cursor-pointer mr-3" onChange={handleSetLanguage} defaultValue="en">
+                    <option value="en">En</option>
+                    <option value="fr">Fr</option>
+                </select>
+
+                <button type="button" className="btn" onClick={() => handleDownloadResume()}>
+                    Download
+                </button>
+            </div>
         </div>
     </div>
 }
