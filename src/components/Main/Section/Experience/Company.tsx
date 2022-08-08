@@ -1,5 +1,7 @@
 import React from "react"
-import moment from "moment";
+import moment from "moment"
+import 'moment/locale/fr'
+import 'moment/locale/en-gb'
 import List from "../../../Style/List"
 import __ from "../../../../lang"
 import {useAppSelector} from "../../../../services/redux/hooks"

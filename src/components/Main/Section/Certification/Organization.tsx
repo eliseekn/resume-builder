@@ -1,9 +1,11 @@
 import React from "react"
 import List from "../../../Style/List"
 import moment from "moment/moment"
+import 'moment/locale/fr'
+import 'moment/locale/en-gb'
 import __ from "../../../../lang";
-import {useAppSelector} from "../../../../services/redux/hooks";
-import {RootState} from "../../../../services/redux/store";
+import {useAppSelector} from "../../../../services/redux/hooks"
+import {RootState} from "../../../../services/redux/store"
 
 export interface Props {
     id: number,
