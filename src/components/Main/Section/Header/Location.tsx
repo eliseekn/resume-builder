@@ -7,7 +7,7 @@ interface Props {content: string}
 export default function Location({content}: Props) {
     return  <>
         {content !== '' && <div className="flex flex-row items-center">
-            <FontAwesomeIcon icon={faLocationDot} />
+            <FontAwesomeIcon icon={faLocationDot} size='sm' />
             <p className="ml-2">{content}</p>
         </div>}
     </>

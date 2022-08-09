@@ -1,5 +1,5 @@
 import React from "react"
-import moment from "moment"
+import moment from "moment/moment"
 import 'moment/locale/fr'
 import 'moment/locale/en-gb'
 import List from "../../../Style/List"
@@ -21,14 +21,17 @@ export default function Company({name, startDate, endDate, jobTitle, jobDescript
 
     const jobDescriptionToList = () => jobDescription.split('#')
 
-    const setDate = () => {
+    const setPeriod = () => {
         moment.locale(language)
-        return <span className="italic">{moment(startDate).format('MMM YYYY')} - {moment(endDate).format('MMM YYYY')}</span>
+
+        return <span className="italic">
+            {moment(startDate).format('ll')} - {moment(endDate).format('ll')}
+        </span>
     }
 
     return <List>
         <li>
-            <span className="font-medium italic">{jobTitle}</span> {__('at')} <span className="font-medium italic">{name}</span> ({setDate()})
+            <span className="font-medium italic">{jobTitle}</span> {__('at')} <span className="font-medium italic">{name}</span> ({setPeriod()})
         </li>
 
         <ul className="list-disc ml-8 mt-2">

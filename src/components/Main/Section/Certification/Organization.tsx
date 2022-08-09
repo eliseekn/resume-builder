@@ -19,7 +19,7 @@ export default function Organization({name, certificationName, issueDate}: Props
 
     const setIssueDate = () => {
         moment.locale(language)
-        return moment(issueDate).format('MMM YYYY')
+        return moment(issueDate).format('ll')
     }
 
     return <List>

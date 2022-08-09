@@ -4,8 +4,8 @@ import moment from "moment/moment"
 import 'moment/locale/fr'
 import 'moment/locale/en-gb'
 import __ from "../../../../lang"
-import {useAppSelector} from "../../../../services/redux/hooks";
-import {RootState} from "../../../../services/redux/store";
+import {useAppSelector} from "../../../../services/redux/hooks"
+import {RootState} from "../../../../services/redux/store"
 
 export interface Props {
     id: number,
@@ -20,7 +20,10 @@ export default function School({name, degree, startDate, endDate}: Props) {
 
     const setDate = () => {
         moment.locale(language)
-        return <span className="italic">{moment(startDate).format('MMM YYYY')} - {moment(endDate).format('MMM YYYY')}</span>
+
+        return <span className="italic">
+            {moment(startDate).format('ll')} - {moment(endDate).format('ll')}
+        </span>
     }
 
     return <List>
