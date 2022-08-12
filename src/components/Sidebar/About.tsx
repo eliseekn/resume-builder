@@ -35,11 +35,10 @@ export default function About() {
         {displayOptions && <div className="ml-2 px-5">
             <div className="mt-3">
                 <textarea
-                    className="rounded-lg w-full"
+                    className="rounded-lg w-full resize-none"
                     onChange={handleSetAbout}
                     placeholder="I have 3+ years of experience in user interfaces and web app development."
                     rows={5}
-                    style={{ resize: 'none' }}
                     value={about}
                 ></textarea>
             </div>
