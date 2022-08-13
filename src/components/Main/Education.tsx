@@ -25,8 +25,8 @@ export default function Education() {
         </p>
 
         <ul className="list-disc ml-10 mt-3">
-            {educations.map((education, i) =>
-                <li key={i}>
+            {educations.map(education =>
+                <li key={education.id}>
                     <span className="font-medium italic">{education.degree}</span> {__('at')} <span className="font-medium italic">{education.school}</span> (<span className="italic">{setPeriod(education.startDate, education.endDate)}</span>)
                 </li>
             )}

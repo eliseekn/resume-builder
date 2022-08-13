@@ -22,8 +22,8 @@ export default function Certification() {
         </p>
 
         <ul className="list-disc ml-10 mt-3">
-            {certifications.map((certification, i) =>
-                <li key={i}>
+            {certifications.map(certification =>
+                <li key={certification.id}>
                     <span className="font-medium italic">{certification.name}</span> {__('at')} <span className="font-medium italic">{certification.organization}</span> (<span className="italic">{setIssueDate(certification.issueDate)}</span>)
                 </li>
             )}

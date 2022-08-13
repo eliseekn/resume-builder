@@ -27,7 +27,7 @@ export default function Experience() {
         </p>
 
         <ul className="list-disc ml-10 mt-3">
-            {experiences.map((experience, i) => <div key={i}>
+            {experiences.map(experience => <div key={experience.id}>
                 <li>
                     <span className="font-medium italic">{experience.jobTitle}</span> {__('at')} <span className="font-medium italic">{experience.company}</span> (<span className="italic">{setPeriod(experience.startDate, experience.endDate)}</span>)
                 </li>
