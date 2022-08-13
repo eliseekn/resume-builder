@@ -1,57 +1,60 @@
 import React, {ChangeEvent, useState} from "react"
-import {useAppDispatch, useAppSelector} from "../../services/redux/hooks";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleDown, faAngleUp, faMinus} from "@fortawesome/free-solid-svg-icons";
-import {Props} from "../Main/Section/Certification/Organization";
-import {RootState} from "../../services/redux/store";
-import {addCertification, removeCertification} from "../../services/redux/reducers/certificationReducer";
-import {removeSection} from "../../services/redux/reducers/sectionsReducer";
+import {useAppDispatch, useAppSelector} from "../../services/redux/hooks"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faAngleDown, faAngleUp, faMinus} from "@fortawesome/free-solid-svg-icons"
+import {RootState} from "../../services/redux/store"
+import {addCertification, removeCertification} from "../../services/redux/reducers/certificationReducer"
+import {removeSection} from "../../services/redux/reducers/sectionsReducer"
+import {Props} from "../../services/redux/reducers/certificationReducer"
 
 export default function Certification() {
     const dispatch = useAppDispatch()
-    const organizations = useAppSelector<Props[]>((state: RootState) => state.certification)
+    const certifications = useAppSelector<Props[]>((state: RootState) => state.certification)
 
     const [displayOptions, setDisplayOptions] = useState<boolean>(false)
-    const [organizationId, setOrganizationId] = useState<number>(1)
-    const [organization, setOrganization] = useState<Props>({
-        id: organizationId,
+    const [certificationId, setCertificationId] = useState<number>(1)
+    const [certification, setCertification] = useState<Props>({
+        id: certificationId,
         name: '',
-        certificationName: '',
+        organization: '',
         issueDate: '',
     })
 
     const handleSetOrganizationName = (e: ChangeEvent<HTMLInputElement>) => {
-        setOrganization({...organization, name: e.target.value})
+        setCertification({...certification, name: e.target.value})
     }
 
-    const handleSetOrganizationCertificationName = (e: ChangeEvent<HTMLInputElement>) => {
-        setOrganization({...organization, certificationName: e.target.value})
+    const handleSetCertificationName = (e: ChangeEvent<HTMLInputElement>) => {
+        setCertification({...certification, organization: e.target.value})
     }
 
-    const handleSetOrganizationIssueDate = (e: ChangeEvent<HTMLInputElement>) => {
-        setOrganization({...organization, issueDate: e.target.value})
+    const handleSetIssueDate = (e: ChangeEvent<HTMLInputElement>) => {
+        setCertification({...certification, issueDate: e.target.value})
     }
 
-    const handleAddOrganization = () => {
-        if (organization.name === '' || organization.certificationName === '' || organization.issueDate === '') {
+    const handleAddCertification = () => {
+        if (
+            certification.name === '' ||
+            certification.organization === '' ||
+            certification.issueDate === ''
+        ) {
             return alert('Please provide valid certification infos')
         }
 
-        if (organizations.includes(organization)) return alert('This certification has already been added')
+        if (certifications.includes(certification)) return alert('This certification has already been added')
 
-        setOrganizationId(organizationId + 1)
+        setCertificationId(certificationId + 1)
+        dispatch(addCertification({...certification, id: certificationId}))
 
-        dispatch(addCertification({...organization, id: organizationId}))
-
-        setOrganization({
-            id: organizationId,
+        setCertification({
+            id: certificationId,
             name: '',
-            certificationName: '',
+            organization: '',
             issueDate: '',
         })
     }
 
-    const handleRemoveOrganization = (id: number) => {
+    const handleRemoveCertification = (id: number) => {
         dispatch(removeCertification(id))
     }
 
@@ -73,16 +76,16 @@ export default function Certification() {
 
         {displayOptions && <div className="ml-2 px-5">
             <div className="mt-3">
-                <input type="search" className="rounded-lg w-full mb-3" placeholder="Organization name" value={organization.name} onChange={handleSetOrganizationName} />
-                <input type="search" className="rounded-lg w-full mb-3" placeholder="Certification name" value={organization.certificationName} onChange={handleSetOrganizationCertificationName} />
-                <input type="date" className="rounded-lg w-full mb-3" placeholder="Issue date" value={organization.issueDate} onChange={handleSetOrganizationIssueDate} />
+                <input type="search" className="rounded-lg w-full mb-3" placeholder="Organization name" value={certification.name} onChange={handleSetOrganizationName} />
+                <input type="search" className="rounded-lg w-full mb-3" placeholder="Certification name" value={certification.organization} onChange={handleSetCertificationName} />
+                <input type="date" className="rounded-lg w-full mb-3" placeholder="Issue date" value={certification.issueDate} onChange={handleSetIssueDate} />
 
-                <button className="btn py-2 disabled:bg-gray-300 w-full" onClick={() => handleAddOrganization()}>Add</button>
+                <button className="btn py-2 disabled:bg-gray-300 w-full" onClick={() => handleAddCertification()}>Add</button>
 
                 <div className="mt-3 grid grid-cols-1 gap-1">
-                    {organizations.map(organization => <div key={organization.id} className="flex items-center justify-between badge">
-                        <span>{organization.certificationName} at {organization.name}</span>
-                        <span className="cursor-pointer px-1 font-bold" onClick={() => handleRemoveOrganization(organization.id)}>x</span>
+                    {certifications.map(certification => <div key={certification.id} className="flex items-center justify-between badge">
+                        <span>{certification.organization} at {certification.name}</span>
+                        <span className="cursor-pointer px-1 font-bold" onClick={() => handleRemoveCertification(certification.id)}>x</span>
                     </div>)}
                 </div>
             </div>

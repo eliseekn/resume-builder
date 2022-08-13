@@ -1,5 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import {Props} from "../../../components/Main/Section/Education/School"
+
+export interface Props {
+    id: number,
+    school: string,
+    degree: string
+    endDate: string,
+    startDate: string,
+}
 
 export const educationSlice = createSlice({
     name: 'education',

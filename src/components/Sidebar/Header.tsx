@@ -1,11 +1,5 @@
 import React, {ChangeEvent, useState} from "react"
-import {
-    setEmailAddress,
-    setFullNane, setJobTitle,
-    setLocation,
-    setPhoneNumber,
-    setPortfolioUrl
-} from "../../services/redux/reducers/headerReducer"
+import {setHeader} from "../../services/redux/reducers/headerReducer"
 import {useAppDispatch, useAppSelector} from "../../services/redux/hooks";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faAngleUp, faAngleDown, faMinus} from "@fortawesome/free-solid-svg-icons";
@@ -19,27 +13,27 @@ export default function Header() {
     const [displayOptions, setDisplayOptions] = useState<boolean>(false)
 
     const handleSetFullName = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(setFullNane(e.target.value))
+        dispatch(setHeader({fullName: e.target.value}))
     }
 
     const handleSetJobTitle = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(setJobTitle(e.target.value))
+        dispatch(setHeader({jobTitle: e.target.value}))
     }
 
     const handleSetEmailAddress = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(setEmailAddress(e.target.value))
+        dispatch(setHeader({emailAddress: e.target.value}))
     }
 
     const handleSetPhoneNumber = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(setPhoneNumber(e.target.value))
+        dispatch(setHeader({phoneNumber: e.target.value}))
     }
 
     const handleSetLocation = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(setLocation(e.target.value))
+        dispatch(setHeader({location: e.target.value}))
     }
 
     const handleSetPortfolioUrl = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(setPortfolioUrl(e.target.value))
+        dispatch(setHeader({portfolioUrl: e.target.value}))
     }
 
     const handleRemoveSection = (section: string) => {

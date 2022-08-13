@@ -1,10 +1,10 @@
 import React, {ChangeEvent, useState} from "react"
 import {setAbout} from "../../services/redux/reducers/aboutReducer"
-import {useAppDispatch, useAppSelector} from "../../services/redux/hooks";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleDown, faAngleUp, faMinus} from "@fortawesome/free-solid-svg-icons";
-import {RootState} from "../../services/redux/store";
-import {removeSection} from "../../services/redux/reducers/sectionsReducer";
+import {useAppDispatch, useAppSelector} from "../../services/redux/hooks"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faAngleDown, faAngleUp, faMinus} from "@fortawesome/free-solid-svg-icons"
+import {RootState} from "../../services/redux/store"
+import {removeSection} from "../../services/redux/reducers/sectionsReducer"
 
 export default function About() {
     const dispatch = useAppDispatch()
@@ -37,7 +37,7 @@ export default function About() {
                 <textarea
                     className="rounded-lg w-full resize-none"
                     onChange={handleSetAbout}
-                    placeholder="I have 3+ years of experience in user interfaces and web app development."
+                    placeholder="I have 3+ years experience in user interfaces and web app development."
                     rows={5}
                     value={about}
                 ></textarea>

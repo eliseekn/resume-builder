@@ -1,3 +1,3 @@
 # Resume Builder
 
-Dynamique resume builder made with React.js and TailwindCSS
+Dynamic resume builder made with React.js and TailwindCSS

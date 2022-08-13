@@ -7,6 +7,5 @@ export default function __(content: string) {
     const language = useAppSelector<string>((state: RootState) => state.language)
 
     if (language === 'fr') return fr[content]
-
     return en[content]
 }

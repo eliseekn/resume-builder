@@ -5,12 +5,11 @@ import Skills from "./Skills"
 import Experience from "./Experience"
 import Education from "./Education"
 import Certification from "./Certification"
-import {useAppDispatch, useAppSelector} from "../../services/redux/hooks";
-import {RootState} from "../../services/redux/store";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlus} from "@fortawesome/free-solid-svg-icons";
-import {addSection} from "../../services/redux/reducers/sectionsReducer";
-import Separator from "../Style/Separator";
+import {useAppDispatch, useAppSelector} from "../../services/redux/hooks"
+import {RootState} from "../../services/redux/store"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faPlus} from "@fortawesome/free-solid-svg-icons"
+import {addSection} from "../../services/redux/reducers/sectionsReducer"
 
 export default function Sidebar() {
     const dispatch = useAppDispatch()
@@ -23,12 +22,15 @@ export default function Sidebar() {
     }
 
     const handleAddSection = () => {
-        dispatch(addSection(section))
+        if (section !== '') {
+            dispatch(addSection(section))
+            setSection('')
+        }
     }
 
     return <div className="basis-1/4 border-r-2 p-5 h-screen sticky top-0 overflow-y-scroll">
         <div className="flex items-center">
-            <select name="sections" id="sections" className="w-full rounded-lg cursor-pointer" onChange={handleSetSection} defaultValue="">
+            <select name="sections" id="sections" className="w-full rounded-lg cursor-pointer" onChange={handleSetSection} value={section}>
                 <option value="">Select a section</option>
                 <option value="header">Header</option>
                 <option value="about">About</option>
@@ -43,7 +45,7 @@ export default function Sidebar() {
             </button>
         </div>
 
-        <Separator />
+        <hr className="my-5"/>
 
         {sections.includes('header') && <Header />}
         {sections.includes('about') && <About />}

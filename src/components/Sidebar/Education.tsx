@@ -1,63 +1,66 @@
 import React, {ChangeEvent, useState} from "react"
-import {useAppDispatch, useAppSelector} from "../../services/redux/hooks";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleDown, faAngleUp, faMinus} from "@fortawesome/free-solid-svg-icons";
-import {Props} from "../Main/Section/Education/School";
-import {RootState} from "../../services/redux/store";
-import {addEducation, removeEducation} from "../../services/redux/reducers/educationReducer";
-import {removeSection} from "../../services/redux/reducers/sectionsReducer";
+import {useAppDispatch, useAppSelector} from "../../services/redux/hooks"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faAngleDown, faAngleUp, faMinus} from "@fortawesome/free-solid-svg-icons"
+import {RootState} from "../../services/redux/store"
+import {addEducation, removeEducation, Props} from "../../services/redux/reducers/educationReducer"
+import {removeSection} from "../../services/redux/reducers/sectionsReducer"
 
 export default function Education() {
     const dispatch = useAppDispatch()
-    const schools = useAppSelector<Props[]>((state: RootState) => state.education)
+    const educations = useAppSelector<Props[]>((state: RootState) => state.education)
 
     const [displayOptions, setDisplayOptions] = useState<boolean>(false)
-    const [schoolId, setSchoolId] = useState<number>(1)
-    const [school, setSchool] = useState<Props>({
-        id: schoolId,
-        name: '',
+    const [educationId, setEducationId] = useState<number>(1)
+    const [education, setEducation] = useState<Props>({
+        id: educationId,
+        school: '',
         degree: '',
         startDate: '',
         endDate: ''
     })
 
     const handleSetSchoolName = (e: ChangeEvent<HTMLInputElement>) => {
-        setSchool({...school, name: e.target.value})
+        setEducation({...education, school: e.target.value})
     }
 
-    const handleSetSchoolJobTitle = (e: ChangeEvent<HTMLInputElement>) => {
-        setSchool({...school, degree: e.target.value})
+    const handleSetJobTitle = (e: ChangeEvent<HTMLInputElement>) => {
+        setEducation({...education, degree: e.target.value})
     }
 
-    const handleSetSchoolStartDate = (e: ChangeEvent<HTMLInputElement>) => {
-        setSchool({...school, startDate: e.target.value})
+    const handleSetStartDate = (e: ChangeEvent<HTMLInputElement>) => {
+        setEducation({...education, startDate: e.target.value})
     }
 
-    const handleSetSchoolEndDate = (e: ChangeEvent<HTMLInputElement>) => {
-        setSchool({...school, endDate: e.target.value})
+    const handleSetEndDate = (e: ChangeEvent<HTMLInputElement>) => {
+        setEducation({...education, endDate: e.target.value})
     }
 
-    const handleAddSchool = () => {
-        if (school.name === '' || school.degree === '' || school.startDate === '' || school.endDate === '') {
+    const handleAddEducation = () => {
+        if (
+            education.school === '' ||
+            education.degree === '' ||
+            education.startDate === '' ||
+            education.endDate === ''
+        ) {
             return alert('Please provide valid education infos')
         }
 
-        if (schools.includes(school)) return alert('This education has already been added')
+        if (educations.includes(education)) return alert('This education has already been added')
 
-        setSchoolId(schoolId + 1)
+        setEducationId(educationId + 1)
+        dispatch(addEducation({...education, id: educationId}))
 
-        dispatch(addEducation({...school, id: schoolId}))
-
-        setSchool({
-            id: schoolId,
-            name: '',
+        setEducation({
+            id: educationId,
+            school: '',
             degree: '',
             startDate: '',
             endDate: ''
         })
     }
 
-    const handleRemoveSchool = (id: number) => {
+    const handleRemoveEducation = (id: number) => {
         dispatch(removeEducation(id))
     }
 
@@ -79,20 +82,20 @@ export default function Education() {
 
         {displayOptions && <div className="ml-2 px-5">
             <div className="mt-3">
-                <input type="search" className="rounded-lg w-full mb-3" placeholder="School name" value={school.name} onChange={handleSetSchoolName} />
-                <input type="search" className="rounded-lg w-full mb-3" placeholder="Degree" value={school.degree} onChange={handleSetSchoolJobTitle} />
+                <input type="search" className="rounded-lg w-full mb-3" placeholder="School name" value={education.school} onChange={handleSetSchoolName} />
+                <input type="search" className="rounded-lg w-full mb-3" placeholder="Degree" value={education.degree} onChange={handleSetJobTitle} />
 
                 <div className="flex items-center mb-3">
-                    <input type="date" className="rounded-lg w-1/2 mr-3" placeholder="Start date" value={school.startDate} onChange={handleSetSchoolStartDate} />
-                    <input type="date" className="rounded-lg w-1/2" placeholder="End date" value={school.endDate} onChange={handleSetSchoolEndDate} />
+                    <input type="date" className="rounded-lg w-1/2 mr-3" placeholder="Start date" value={education.startDate} onChange={handleSetStartDate} />
+                    <input type="date" className="rounded-lg w-1/2" placeholder="End date" value={education.endDate} onChange={handleSetEndDate} />
                 </div>
 
-                <button className="btn py-2 disabled:bg-gray-300 w-full" onClick={() => handleAddSchool()}>Add</button>
+                <button className="btn py-2 disabled:bg-gray-300 w-full" onClick={() => handleAddEducation()}>Add</button>
 
                 <div className="mt-3 grid grid-cols-1 gap-1">
-                    {schools.map(school => <div key={school.id} className="flex items-center justify-between badge">
-                        <span>{school.degree} at {school.name}</span>
-                        <span className="cursor-pointer px-1 font-bold" onClick={() => handleRemoveSchool(school.id)}>x</span>
+                    {educations.map(education => <div key={education.id} className="flex items-center justify-between badge">
+                        <span>{education.degree} at {education.school}</span>
+                        <span className="cursor-pointer px-1 font-bold" onClick={() => handleRemoveEducation(education.id)}>x</span>
                     </div>)}
                 </div>
             </div>
