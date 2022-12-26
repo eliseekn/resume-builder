@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export const sectionsSlice = createSlice({
-    name: 'sections',
+    name: 'section',
     initialState: [],
     reducers: {
         addSection(state: string[], action: PayloadAction<string>) {

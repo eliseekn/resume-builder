@@ -10,7 +10,7 @@ export default function Experience() {
     const dispatch = useAppDispatch()
     const experiences = useAppSelector<Props[]>((state: RootState) => state.experience)
 
-    const [displayOptions, setDisplayOptions] = useState<boolean>(false)
+    const [displayOptions, setDisplayOptions] = useState<boolean>(true)
     const [experienceId, setExperienceId] = useState<number>(1)
     const [experience, setExperience] = useState<Props>({
         id: experienceId,

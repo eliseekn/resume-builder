@@ -11,7 +11,7 @@ export default function Certification() {
     const dispatch = useAppDispatch()
     const certifications = useAppSelector<Props[]>((state: RootState) => state.certification)
 
-    const [displayOptions, setDisplayOptions] = useState<boolean>(false)
+    const [displayOptions, setDisplayOptions] = useState<boolean>(true)
     const [certificationId, setCertificationId] = useState<number>(1)
     const [certification, setCertification] = useState<Props>({
         id: certificationId,

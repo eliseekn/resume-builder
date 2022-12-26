@@ -10,7 +10,7 @@ export default function Skills() {
     const dispatch = useAppDispatch()
     const skills = useAppSelector<string[]>((state: RootState) => state.skills)
 
-    const [displayOptions, setDisplayOptions] = useState<boolean>(false)
+    const [displayOptions, setDisplayOptions] = useState<boolean>(true)
     const [skill, setSkill] = useState<string>('')
 
     const handleSetSkill = (e: ChangeEvent<HTMLInputElement>) => {

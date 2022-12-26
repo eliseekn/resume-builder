@@ -6,5 +6,5 @@ export const en: Props = {
     "experience": "Professional Experience",
     "education": "Education",
     "certifications": "Certifications",
-    "at": "at",
+    "at": "at"
 }

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export const skillsSlice = createSlice({
-    name: 'skills',
+    name: 'skill',
     initialState: [],
     reducers: {
         addSkill(state: string[], action: PayloadAction<string>) {

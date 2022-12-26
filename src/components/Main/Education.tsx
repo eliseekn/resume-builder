@@ -19,6 +19,8 @@ export default function Education() {
         </span>
     }
 
+    const at = __('at')
+
     return <>
         <p className="font-medium text-xl mb-3">
             {__('education')}
@@ -27,7 +29,7 @@ export default function Education() {
         <ul className="list-disc ml-10 mt-3">
             {educations.map(education =>
                 <li key={education.id}>
-                    <span className="font-medium italic">{education.degree}</span> {__('at')} <span className="font-medium italic">{education.school}</span> (<span className="italic">{setPeriod(education.startDate, education.endDate)}</span>)
+                    <span className="font-medium italic">{education.degree}</span> {at} <span className="font-medium italic">{education.school}</span> (<span className="italic">{setPeriod(education.startDate, education.endDate)}</span>)
                 </li>
             )}
         </ul>

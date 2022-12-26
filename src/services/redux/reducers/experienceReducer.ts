@@ -22,5 +22,5 @@ export const experienceSlice = createSlice({
     }
 })
 
-export const {addExperience, removeExperience,} = experienceSlice.actions
+export const {addExperience, removeExperience} = experienceSlice.actions
 export default experienceSlice.reducer

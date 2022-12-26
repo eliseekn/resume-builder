@@ -10,7 +10,7 @@ export default function Header() {
     const dispatch = useAppDispatch()
     const header = useAppSelector((state: RootState) => state.header)
 
-    const [displayOptions, setDisplayOptions] = useState<boolean>(false)
+    const [displayOptions, setDisplayOptions] = useState<boolean>(true)
 
     const handleSetFullName = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(setHeader({fullName: e.target.value}))

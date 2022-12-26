@@ -10,7 +10,7 @@ export default function Education() {
     const dispatch = useAppDispatch()
     const educations = useAppSelector<Props[]>((state: RootState) => state.education)
 
-    const [displayOptions, setDisplayOptions] = useState<boolean>(false)
+    const [displayOptions, setDisplayOptions] = useState<boolean>(true)
     const [educationId, setEducationId] = useState<number>(1)
     const [education, setEducation] = useState<Props>({
         id: educationId,

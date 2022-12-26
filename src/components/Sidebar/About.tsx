@@ -10,7 +10,7 @@ export default function About() {
     const dispatch = useAppDispatch()
     const about = useAppSelector((state: RootState) => state.about)
 
-    const [displayOptions, setDisplayOptions] = useState<boolean>(false)
+    const [displayOptions, setDisplayOptions] = useState<boolean>(true)
 
     const handleSetAbout = (e: ChangeEvent<HTMLTextAreaElement>) => {
         dispatch(setAbout(e.target.value))

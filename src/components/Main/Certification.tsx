@@ -16,6 +16,8 @@ export default function Certification() {
         return moment(issueDate).format('ll')
     }
 
+    const at = __('at')
+
     return <>
         <p className="font-medium text-xl mb-3">
             {__('certifications')}
@@ -24,7 +26,7 @@ export default function Certification() {
         <ul className="list-disc ml-10 mt-3">
             {certifications.map(certification =>
                 <li key={certification.id}>
-                    <span className="font-medium italic">{certification.name}</span> {__('at')} <span className="font-medium italic">{certification.organization}</span> (<span className="italic">{setIssueDate(certification.issueDate)}</span>)
+                    <span className="font-medium italic">{certification.name}</span> {at} <span className="font-medium italic">{certification.organization}</span> (<span className="italic">{setIssueDate(certification.issueDate)}</span>)
                 </li>
             )}
         </ul>
